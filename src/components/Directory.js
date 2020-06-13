@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import MeniItem from "./MenuItem";
 import { sections as sectionsData } from '../services/sections';
 // styles
 import '../styles/directory.scss';
