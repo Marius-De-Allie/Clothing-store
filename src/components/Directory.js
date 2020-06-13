@@ -3,6 +3,7 @@ import MeniItem from "./MenuItem";
 import { sections as sectionsData } from '../services/sections';
 // styles
 import '../styles/directory.scss';
+import MenuItem from './MenuItem';
 
 const Directory = props => {
     // component state.
@@ -10,11 +11,7 @@ const Directory = props => {
 
     return (
         <div className="directory-menu">
-            <MeniItem title="HATS"/>
-            <MeniItem title="JACKETS" />
-            <MeniItem title="SNEAKERS" />
-            <MeniItem title="WOMENS" />
-            <MeniItem title="MENS" />
+            {sections.map(section => <MenuItem key={section.id} {...section} />)}
         </div>
     )
 };
