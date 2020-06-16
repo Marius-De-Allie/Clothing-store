@@ -22,6 +22,7 @@ class SignIn extends React.Component {
 
     handleSubmit = evt => {
         evt.preventDefault();
+        
         // reset both input fields to an empty string
         this.setState(() => ({
             email: '',
