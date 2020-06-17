@@ -1,4 +1,5 @@
 import React from 'react';
+import CustomButton from './CustomButton';
 // styles.
 import '../styles/categoryItem.scss';
 
@@ -14,7 +15,7 @@ const CategoryItem = ({imageUrl, name, price}) => (
             <span className="name">{name}</span>
             <span className="price">{`$${price}.00`}</span>
         </div>
-        <button>ADD TO CART</button>
+        <CustomButton inverted>Add to cart</CustomButton>
     </div>
 );
 
