@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import { sections as sectionsData } from '../services/sections';
+import { connect } from 'react-redux';
+import MenuItem from './MenuItem';
 // styles
 import '../styles/directory.scss';
-import MenuItem from './MenuItem';
 
-const Directory = props => {
-    // component state.
-    const [sections, setSections] = useState(sectionsData);
+const Directory = ({ sections }) => (
+    <div className="directory-menu">
+        {sections.map(section => <MenuItem key={section.id} {...section} />)}
+    </div>
+);
 
-    return (
-        <div className="directory-menu">
-            {sections.map(section => <MenuItem key={section.id} {...section} />)}
-        </div>
-    )
-};
+const mapStateToProps = ({ directory }) => ({
+    sections: directory.sections
+});
 
-export default Directory;
+export default connect(mapStateToProps)(Directory);
