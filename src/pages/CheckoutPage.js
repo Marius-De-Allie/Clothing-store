@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import CheckoutItem from '../components/CheckoutItem';
 // styles
 import '../styles/checkOutPage.scss'
 
@@ -22,7 +23,7 @@ const CheckOutPage = ({ items, totalPrice }) => (
                 <span>Remove</span>
             </div>
         </div>
-        {items.map(item => item.name)}
+        {items.map(item => <CheckoutItem key={item.id} item={item} />)}
         <div className="total">
             <span>TOTAL: ${totalPrice}</span>
         </div>
