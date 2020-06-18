@@ -1,6 +1,6 @@
 const ADD_ITEM = 'ADD_ITEM';
 const TOGGLE_HIDDEN = 'TOGGLE_HIDDEN';
-const REMOVE_ITEM = 'REMOVE_ITEM';
+const REMOVE_CARTITEM = 'REMOVE_CARTITEM';
 
 const addItem = item => ({
     type: ADD_ITEM,
@@ -11,9 +11,9 @@ const toggleHidden = () => ({
     type: TOGGLE_HIDDEN
 });
 
-const removeItem = id => ({
-    type: REMOVE_ITEM,
+const removeCartItem = id => ({
+    type: REMOVE_CARTITEM,
     id
 });
 
-export { ADD_ITEM, TOGGLE_HIDDEN, REMOVE_ITEM, addItem, toggleHidden, removeItem };
+export { ADD_ITEM, TOGGLE_HIDDEN, REMOVE_CARTITEM, addItem, toggleHidden, removeCartItem };
