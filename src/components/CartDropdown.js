@@ -3,11 +3,19 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import CustomButton from './CustomButton';
 import CartItem from './CartItem';
+import { toggleHidden } from '../redux/actions/cart'
 // styles.
 import '../styles/cartDropdown.scss';
 
-const CartDropdown = ({ cartItems }) => {
+const CartDropdown = ({ cartItems, toggleHidden }) => {
     const history = useHistory();
+
+    const handleClick = () => {
+        // redirect to checkout page.
+        history.push("/checkout");
+        // Hide cart
+       toggleHidden();
+    };
 
     return (
         <div className="cart-dropdown">
@@ -18,13 +26,17 @@ const CartDropdown = ({ cartItems }) => {
                 <span className="empty-message">Your cart is empty</span>
             }
             </div>
-            <CustomButton onClick={() => history.push("/checkout")}>GO TO CHECKOUT</CustomButton>
+            <CustomButton onClick={handleClick}>GO TO CHECKOUT</CustomButton>
         </div>
     );
 };
 
 const mapStateToProps = ({ cart }) => ({
     cartItems: cart.items
-})
+});
 
-export default connect(mapStateToProps)(CartDropdown);
+const mapDispatchToProps = {
+    toggleHidden
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartDropdown);
