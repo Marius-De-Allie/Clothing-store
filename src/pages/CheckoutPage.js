@@ -1,10 +1,37 @@
 import React from 'react';
+import { connect } from 'react-redux';
+// styles
+import '../styles/checkOutPage.scss'
 
-const CheckOutPage = () => (
-    <div>
-        CHECKOUTPAGE
+const CheckOutPage = ({ items, totalPrice }) => (
+    <div className="checkout-page">
+        <div className="checkout-header">
+            <div className="header-block">
+                <span>Product</span>
+            </div>
+            <div className="header-block">
+                <span>Description</span>
+            </div>
+            <div className="header-block">
+                <span>Quantity</span>
+            </div>
+            <div className="header-block">
+                <span>Price</span>
+            </div>
+            <div className="header-block">
+                <span>Remove</span>
+            </div>
+        </div>
+        {items.map(item => item.name)}
+        <div className="total">
+            <span>TOTAL: ${totalPrice}</span>
+        </div>
     </div>
-
 );
 
-export default CheckOutPage;
+const mapStateToProps = ({ cart }) => ({
+    items: cart.items,
+    totalPrice: cart.items.reduce((accumulatedPrice, item) => accumulatedPrice + item.quantity * item.price, 0)
+})
+
+export default connect(mapStateToProps)(CheckOutPage);
