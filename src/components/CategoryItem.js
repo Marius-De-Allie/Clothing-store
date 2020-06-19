@@ -19,7 +19,7 @@ const CategoryItem = ({ item, addItem }) => {
             <div className="category-footer">
             
                 <span className="name">{name}</span>
-                <span className="price">{`$${price}.00`}</span>
+                <span className="price">{price}</span>
             </div>
             <CustomButton inverted onClick={() => addItem(item)}>Add to cart</CustomButton>
         </div>
