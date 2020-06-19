@@ -1,15 +1,13 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+
 import CategoriesOverview from '../components/CategoriesOverview';
 
-class ShopPage extends React.Component {
-    render() {
-        return (
-            <div className="shop-page">
-                <CategoriesOverview />
-            </div>
-        )
-    }
-};
+const ShopPage = ({ match }) => (
+    <div className="shop-page">
+        <Route exact path={`${match.path}/:category`} component={CategoriesOverview} />
+    </div>
 
+);
 
 export default ShopPage;
