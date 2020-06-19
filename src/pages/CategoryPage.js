@@ -13,18 +13,8 @@ const CategoryPage = ({ collection }) => (
     </div>
 );
 
-const mapStateToProps = (state, ownProps) => {
-    const mapCategoryToId = {
-        hats: 1,
-        sneakers: 2,
-        jackets: 3,
-        womens: 4,
-        mens: 5
-    };
-
-    return {
-        collection: state.shop.collections.find(collection => collection.id === mapCategoryToId[ownProps.match.params.categoryId])
-    }
-};
+const mapStateToProps = (state, ownProps) => ({
+    collection: state.shop.collections[ownProps.match.params.categoryId]
+});
 
 export default connect(mapStateToProps)(CategoryPage);
