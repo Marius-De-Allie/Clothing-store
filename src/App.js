@@ -17,7 +17,7 @@ class App extends React.Component {
   componentDidMount() {
     const { setCurrentUser, collectionsArray } = this.props;
     // Add new collection and documents to firebase DB (Run once).
-    addCollectionAndDocuments('collections', collectionsArray.map(({ title, items}) => ({title, items})));
+    // addCollectionAndDocuments('collections', collectionsArray.map(({ title, items}) => ({title, items})));
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if(userAuth) {
@@ -59,7 +59,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
-  collectionsArray: Object.keys(state.shop.collections).map(key => state.shop.collections[key])
+  // collectionsArray: Object.keys(state.shop.collections).map(key => state.shop.collections[key])
 
 });
 
