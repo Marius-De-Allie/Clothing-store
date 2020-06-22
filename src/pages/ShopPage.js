@@ -8,12 +8,18 @@ import { firestore, convertCollectionsSnapshotToMap } from '../firebase/firebase
 import { updateCollections } from '../redux/actions/shop';
 
 class ShopPage extends React.Component {
+    // component state.
+    state = {
+        loading: true
+    };
+    
     unsubscribeFromSnapshot = null;
     componentDidMount() {
         const { updateCollections } = this.props;
         const collectionRef = firestore.collection('collections');
         collectionRef.onSnapshot(async snapshot => {
             const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
+            // Dispatch updateCollections action.
             updateCollections(collectionsMap);
         })
 
