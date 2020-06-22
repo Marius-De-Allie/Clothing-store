@@ -16,7 +16,7 @@ const CategoriesOverview = ({ collections }) => (
 );
 
 const mapStateToProps = ({ shop  }) => ({
-    collections: Object.keys(shop.collections).map(key => shop.collections[key])
+    collections: shop.collections ? Object.keys(shop.collections).map(key => shop.collections[key]) : []
 });
 
 

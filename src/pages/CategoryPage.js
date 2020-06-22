@@ -14,7 +14,7 @@ const CategoryPage = ({ collection }) => (
 );
 
 const mapStateToProps = (state, ownProps) => ({
-    collection: state.shop.collections[ownProps.match.params.categoryId]
+    collection: state.shop.collections ? state.shop.collections[ownProps.match.params.categoryId] : null
 });
 
 export default connect(mapStateToProps)(CategoryPage);
