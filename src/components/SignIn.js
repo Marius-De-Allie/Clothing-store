@@ -1,79 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FormInput from './FormInput';
 import CustomButton from './CustomButton';
-import { auth,signInWithGoogle } from '../firebase/firebase.utils';
+import { auth, signInWithGoogle } from '../firebase/firebase.utils';
 // styles.
 import '../styles/signIn.scss';
 
 
-class SignIn extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            email: '',
-            password: ''
-        }
-    }
+const SignIn = () => {
 
-    handleChange = evt => {
+    // Component state.
+    const [credentials, setCredentials] = useState({email: '', password: ''});
+
+    const { email, password } = credentials;
+
+    const handleChange = evt => {
         const { value, name } = evt.target;
-        this.setState(() => ({[name]: value}));
+        setCredentials({...credentials, [name]: value})
     };
 
-    handleSubmit = async evt => {
+    const handleSubmit = async evt => {
         evt.preventDefault();
         
-        const { email, password } = this.state;
-
         try {
             await auth.signInWithEmailAndPassword(email, password);
-            this.setState(() => ({
-                email: '',
-                password: ''
-            }));
+            setCredentials({...credentials, email: '', password: ''})
         } catch(error) {
             console.log(error);
         }
         // reset both input fields to an empty string
-        this.setState(() => ({
-            email: '',
-            password: ''
-        }))
+        setCredentials({...credentials, email: '', password: ''})
     };
 
-
-    render() {
-        return (
-            <div className="sign-in">
-                <h2>I already have an account</h2>
-                <span>Sign in with your email and password</span>
-                <form onSubmit={this.handleSubmit}>
-                    <FormInput
-                        id="email"
-                        type="email" 
-                        value={this.state.email} 
-                        name="email"
-                        required
-                        handleChange={this.handleChange}
-                        label="email"
-                    />
-                    <FormInput 
-                        id="password"
-                        type="password" 
-                        value={this.state.password} 
-                        name="password"
-                        required
-                        handleChange={this.handleChange}
-                        label="password"
-                    />
-                    <div className="buttons">
-                        <CustomButton type="submit"> Sign In </CustomButton>
-                        <CustomButton onClick={signInWithGoogle} isGoogleSignIn>Sign In with Google</CustomButton>
-                    </div>
-                </form>
-            </div>
-        )
-    }
+    return (
+        <div className="sign-in">
+            <h2>I already have an account</h2>
+            <span>Sign in with your email and password</span>
+            <form onSubmit={handleSubmit}>
+                <FormInput
+                    id="email"
+                    type="email" 
+                    value={email} 
+                    name="email"
+                    required
+                    handleChange={handleChange}
+                    label="email"
+                />
+                <FormInput 
+                    id="password"
+                    type="password" 
+                    value={password} 
+                    name="password"
+                    required
+                    handleChange={handleChange}
+                    label="password"
+                />
+                <div className="buttons">
+                    <CustomButton type="submit"> Sign In </CustomButton>
+                    <CustomButton onClick={signInWithGoogle} isGoogleSignIn>Sign In with Google</CustomButton>
+                </div>
+            </form>
+        </div>
+    )
 };
 
 export default SignIn;
