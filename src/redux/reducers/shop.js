@@ -2,7 +2,7 @@ import { FETCH_COLLECTIONS_START, FETCH_COLLECTIONS_SUCCESS, FETCH_COLLECTIONS_F
 
 const INITIAL_STATE = {
     collections: null,
-    isFetching: false,
+    isLoading: true,
     errorMessage: undefined
 };
 
@@ -11,18 +11,18 @@ const shopReducer = (state = INITIAL_STATE, action) => {
         case FETCH_COLLECTIONS_START:
             return {
                 ...state,
-                isFetching: true
+                isLoading: true ? state.isLoading : true
             }
         case FETCH_COLLECTIONS_SUCCESS:
             return {
                 ...state,
                 collections: action.collectionsMap,
-                isFetching: false
+                isLoading: false
             }
         case FETCH_COLLECTIONS_FAIL:
             return {
                 ...state,
-                isFetching: false,
+                isLoading: false,
                 errorMessage: action.errorMessage
             }
         default:
