@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CategoriesOverview from '../components/CategoriesOverview';
@@ -9,23 +9,19 @@ import { fetchCollectionsAsync } from '../redux/actions/shop';
 const CategoriesOverviewWithSpinner = WithSpinner(CategoriesOverview);
 const CategoryPageWithSpinner = WithSpinner(CategoryPage);
 
-class ShopPage extends React.Component {
+const ShopPage = ({ fetchCollectionsAsync, match, isLoading }) => {
 
-    componentDidMount() {
-        const { fetchCollectionsAsync } = this.props;
+    useEffect(() => {
         // Dispatch fetchCollectionsAsync asynchronous action creator to fetch shop collections.
         fetchCollectionsAsync();
-    }
-    
-    render() {
-        const { match, isLoading } = this.props;
-        return (
-            <div className="shop-page">
-                <Route exact path={`${match.path}`} render={(props) => <CategoriesOverviewWithSpinner  isLoading={isLoading} {...props} />} />
-                <Route path={`${match.path}/:categoryId`} render={(props) => <CategoryPageWithSpinner isLoading={isLoading} {...props} />} />
-            </div>
-        )
-    }
+    }, [fetchCollectionsAsync]);
+
+    return (
+        <div className="shop-page">
+            <Route exact path={`${match.path}`} render={(props) => <CategoriesOverviewWithSpinner  isLoading={isLoading} {...props} />} />
+            <Route path={`${match.path}/:categoryId`} render={(props) => <CategoryPageWithSpinner isLoading={isLoading} {...props} />} />
+        </div>
+    );
 };
 
 const mapStateToProps = ( state, ownProps) => ({
