@@ -31,6 +31,10 @@ const App = ({ setCurrentUser, collectionsArray, currentUser }) => {
         setCurrentUser(userAuth);
       } 
     })
+
+    return () => {
+      unsubscribeFromAuth();
+    }
   }, [setCurrentUser]);
 
   return (
