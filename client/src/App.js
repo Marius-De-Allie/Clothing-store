@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from './components/Header';
 import Spinner from './components/Spinner';
+import ErrorBoundary from './components/ErrorBoundary';
 import { auth, createUserProfileDocument, addCollectionAndDocuments} from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/actions/user';
 import './App.css';
@@ -47,12 +48,14 @@ const App = ({ setCurrentUser, collectionsArray, currentUser }) => {
     <div>
       <Header />
       <Switch>
-        <Suspense fallback={<Spinner />}>
-          <Route exact path="/" component={Homepage} />
-          <Route path="/shop" component={ShopPage} />
-          <Route exact path="/signin" render={() => currentUser ? <Redirect to="/"/> : <SignInPage />} />
-          <Route exact path="/checkout" component={CheckOutPage} />
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<Spinner />}>
+            <Route exact path="/" component={Homepage} />
+            <Route path="/shop" component={ShopPage} />
+            <Route exact path="/signin" render={() => currentUser ? <Redirect to="/"/> : <SignInPage />} />
+            <Route exact path="/checkout" component={CheckOutPage} />
+          </Suspense>
+        </ErrorBoundary>
       </Switch>
     </div>
   );

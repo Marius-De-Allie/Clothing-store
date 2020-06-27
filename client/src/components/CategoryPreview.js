@@ -4,7 +4,6 @@ import CategoryItem from './CategoryItem';
 import '../styles/categoryPreview.scss';
 
 const CategoryPreview = ({ title, items }) => {
-    console.log(items)
 
     return (
         <div className="category-preview">
