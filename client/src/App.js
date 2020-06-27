@@ -1,14 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Homepage from './pages/Homepage';
-import ShopPage from './pages/ShopPage';
 import Header from './components/Header';
-import SignInPage from './pages/SignInPage';
-import CheckOutPage from './pages/CheckoutPage';
+import Spinner from './components/Spinner';
 import { auth, createUserProfileDocument, addCollectionAndDocuments} from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/actions/user';
 import './App.css';
+
+// Lazy load Homepage component.
+const Homepage = lazy(() => import('./pages/Homepage'));
+// Lazy load ShopPage component.
+const ShopPage = lazy(() => import('./pages/ShopPage'));
+// Lazy load SignInPage component.
+const SignInPage = lazy(() => import('./pages/SignInPage'));
+// Lazy load CheckOutPage component.
+const CheckOutPage = lazy(() => import('./pages/CheckoutPage'));
 
 
 const App = ({ setCurrentUser, collectionsArray, currentUser }) => {
@@ -41,10 +47,12 @@ const App = ({ setCurrentUser, collectionsArray, currentUser }) => {
     <div>
       <Header />
       <Switch>
-        <Route exact path="/" component={Homepage} />
-        <Route path="/shop" component={ShopPage} />
-        <Route exact path="/signin" render={() => currentUser ? <Redirect to="/"/> : <SignInPage />} />
-        <Route exact path="/checkout" component={CheckOutPage} />
+        <Suspense fallback={<Spinner />}>
+          <Route exact path="/" component={Homepage} />
+          <Route path="/shop" component={ShopPage} />
+          <Route exact path="/signin" render={() => currentUser ? <Redirect to="/"/> : <SignInPage />} />
+          <Route exact path="/checkout" component={CheckOutPage} />
+        </Suspense>
       </Switch>
     </div>
   );
