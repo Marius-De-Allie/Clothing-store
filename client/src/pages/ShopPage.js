@@ -1,13 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CategoriesOverview from '../components/CategoriesOverview';
 import CategoryPage from './CategoryPage';
 import WithSpinner from '../components/WithSpinner';
+import Spinner from '../components/Spinner';
 import { fetchCollectionsAsync } from '../redux/actions/shop';
 
-const CategoriesOverviewWithSpinner = WithSpinner(CategoriesOverview);
-const CategoryPageWithSpinner = WithSpinner(CategoryPage);
+// const CategoriesOverviewWithSpinner = WithSpinner(CategoriesOverview);
+// const CategoryPageWithSpinner = WithSpinner(CategoryPage);
+
+// Lazy load CategoriesOverviewWithSpinner component.
+const CategoriesOverviewWithSpinner = lazy(() => WithSpinner(CategoriesOverview));
+// Lazy load CategoryPageWithSpinner component.
+const CategoryPageWithSpinner = lazy(() => WithSpinner(CategoryPage));
+
 
 const ShopPage = ({ fetchCollectionsAsync, match, isLoading }) => {
 
@@ -18,8 +25,10 @@ const ShopPage = ({ fetchCollectionsAsync, match, isLoading }) => {
 
     return (
         <div className="shop-page">
-            <Route exact path={`${match.path}`} render={(props) => <CategoriesOverviewWithSpinner  isLoading={isLoading} {...props} />} />
-            <Route path={`${match.path}/:categoryId`} render={(props) => <CategoryPageWithSpinner isLoading={isLoading} {...props} />} />
+            <Suspense fallback={<Spinner />}>
+                <Route exact path={`${match.path}`} render={(props) => <CategoriesOverviewWithSpinner  isLoading={isLoading} {...props} />} />
+                <Route path={`${match.path}/:categoryId`} render={(props) => <CategoryPageWithSpinner isLoading={isLoading} {...props} />} />
+            </Suspense>
         </div>
     );
 };
