@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 // styles.
 import '../styles/menuItem.scss';
+import { useCallback } from 'react';
 
 const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
     const history = useHistory();
 
-    const onMenuClick = () => {
+    const onMenuClick = useCallback(() => {
         history.push(`/${linkUrl}`)
-        
-    };
-    
+    }, [history, linkUrl]);
+
     return (
         <div 
             className={`${size} menu-item`}
