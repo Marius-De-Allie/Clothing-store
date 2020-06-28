@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import CustomButton from './CustomButton';
@@ -10,12 +10,12 @@ import '../styles/cartDropdown.scss';
 const CartDropdown = ({ cartItems, toggleHidden }) => {
     const history = useHistory();
 
-    const handleClick = () => {
+    const handleClick = useCallback(() => {
         // redirect to checkout page.
         history.push("/checkout");
         // Hide cart
        toggleHidden();
-    };
+    }, [history, toggleHidden]);
 
     return (
         <div className="cart-dropdown">
