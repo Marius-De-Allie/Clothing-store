@@ -8,6 +8,10 @@ import '../styles/categoryItem.scss';
 const CategoryItem = ({ item, addItem }) => {
 
     const { imageUrl, name, price } = item;
+
+    const handleClick = () => {
+        addItem(item);
+    };
     
     return  (
         <div className="category-item">
@@ -21,7 +25,7 @@ const CategoryItem = ({ item, addItem }) => {
                 <span className="name">{name}</span>
                 <span className="price">{price}</span>
             </div>
-            <CustomButton inverted onClick={() => addItem(item)}>Add to cart</CustomButton>
+            <CustomButton inverted onClick={handleClick}>Add to cart</CustomButton>
         </div>
     );
 };
