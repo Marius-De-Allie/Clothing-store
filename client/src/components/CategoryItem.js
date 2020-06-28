@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import CustomButton from './CustomButton';
 import { addItem } from '../redux/actions/cart';
@@ -9,9 +9,9 @@ const CategoryItem = ({ item, addItem }) => {
 
     const { imageUrl, name, price } = item;
 
-    const handleClick = () => {
+    const handleClick = useCallback(() => {
         addItem(item);
-    };
+    }, [addItem, item]);
     
     return  (
         <div className="category-item">
