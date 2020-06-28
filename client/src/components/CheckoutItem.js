@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import { removeCartItem, addItem, removeItem } from '../redux/actions/cart';
 // styles.
@@ -6,19 +6,19 @@ import '../styles/checkoutItem.scss';
 
 const CheckoutItem = ({ item, removeCartItem, addItem, removeItem }) => {
     // Add cart item on click event handler function.
-    const onAddItemClick = () => {
+    const onAddItemClick = useCallback(() => {
         addItem(item);
-    };
+    }, [addItem, item]);
 
     // Remove cart item on click event handler function.
-    const onRemoveItemClick = () => {
+    const onRemoveItemClick = useCallback(() => {
         removeItem(item);
-    };
+    }, [removeItem, item]);
 
     // Remove all quantities of specific cart item on click event handler function.
-    const onRemoveCartItemClick = () => {
+    const onRemoveCartItemClick = useCallback(() => {
         removeCartItem(item.id);
-    };
+    }, [removeCartItem, item]);
 
     return (
         <div className="checkout-item">
