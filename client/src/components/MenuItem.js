@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 // styles.
 import '../styles/menuItem.scss';
-import { useCallback } from 'react';
 
 const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
     const history = useHistory();

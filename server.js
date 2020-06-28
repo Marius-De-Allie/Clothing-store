@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const stripe = require('stripe');
+const compression = require('compression');
 
 if(process.env.NODE_ENV !== 'production') require('dotenv').config();
 
@@ -12,6 +13,7 @@ const stripeObj = stripe(process.env.STRIPE_SECRET_KEY);
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.use(compression());
 // Convert request.body value to json.
 app.use(bodyParser.json());
 // format url.
