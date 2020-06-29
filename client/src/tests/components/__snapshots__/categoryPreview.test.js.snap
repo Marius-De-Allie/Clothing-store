@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoryPreview component renders propery 1`] = `ShallowWrapper {}`;
