@@ -1,6 +1,6 @@
 import { FETCH_COLLECTIONS_START, FETCH_COLLECTIONS_SUCCESS, FETCH_COLLECTIONS_FAIL } from '../actions/shop';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
     collections: null,
     isLoading: true,
     errorMessage: undefined

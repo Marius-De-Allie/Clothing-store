@@ -4,16 +4,16 @@ const FETCH_COLLECTIONS_START = 'FETCH_COLLECTIONS_START';
 const FETCH_COLLECTIONS_SUCCESS = 'FETCH_COLLECTIONS_SUCCESS';
 const FETCH_COLLECTIONS_FAIL = 'FETCH_COLLECTIONS_FAIL';
 
-const fetchCollectionsStart = () => ({
+export const fetchCollectionsStart = () => ({
     type: FETCH_COLLECTIONS_START
 });
 
-const fetchCollectionsSuccess = collectionsMap => ({
+export const fetchCollectionsSuccess = collectionsMap => ({
     type: FETCH_COLLECTIONS_SUCCESS,
     collectionsMap
 });
 
-const fetchCollectionsFail = errorMessage => ({
+export const fetchCollectionsFail = errorMessage => ({
     type: FETCH_COLLECTIONS_FAIL,
     errorMessage
 });
