@@ -18,7 +18,7 @@ const SignInPage = lazy(() => import('./pages/SignInPage'));
 const CheckOutPage = lazy(() => import('./pages/CheckoutPage'));
 
 
-const App = ({ setCurrentUser, collectionsArray, currentUser }) => {
+export const App = ({ setCurrentUser, collectionsArray, currentUser }) => {
 
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
