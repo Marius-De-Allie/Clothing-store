@@ -1,6 +1,6 @@
 import { SET_CURRENT_USER } from '../actions/user';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
     currentUser: null
 };
 
