@@ -31,3 +31,5 @@ describe('Shop actions', () => {
         })
     });
 });
+
+// Need to create test for async (thunk) action creator.
