@@ -6,7 +6,7 @@ import Spinner from './components/Spinner';
 import ErrorBoundary from './components/ErrorBoundary';
 import { auth, createUserProfileDocument, addCollectionAndDocuments} from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/actions/user';
-import './App.css';
+import './App.scss';
 
 // Lazy load Homepage component.
 const Homepage = lazy(() => import('./pages/Homepage'));
