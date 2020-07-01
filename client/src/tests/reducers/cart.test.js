@@ -9,7 +9,7 @@ describe('Cart reducer', () => {
             items: []
         });
     });
-    it('returns updated state with new item when action type of ADD_ITEM is passed in(dispatched)', () => {
+    it('handles ADD_ITEM action', () => {
         const mockItem = {
             id: 1,
             name: 'blue shirt',
@@ -26,14 +26,14 @@ describe('Cart reducer', () => {
             }]
         });
     });
-    it('returns updated hidden piece of state when action type of TOGGLE_HIDDEN is passed in(dispatched)', () => {
+    it('handles TOGGLE_HIDDEN action', () => {
         expect.assertions(1);
         expect(cartReducer(undefined, cartActions.toggleHidden())).toEqual({
             hidden: false,
             items: []
         });
     });
-    it('returns updated state with item removed when action type of REMOVE_CARTITEM is passed in(dispatched)', () => {
+    it('handles REMOVE_CARTITEM action', () => {
         const mockInitialState = {
             hidden: true,
             items: [
@@ -64,7 +64,7 @@ describe('Cart reducer', () => {
             ]
         });
     });
-    it('returns updated state with item quantity decremented by 1 when action type of REMOVE_ITEM is passed in(dispatched)', () => {
+    it('handles REMOVE_ITEM action', () => {
         const mockInitialState = {
             hidden: true,
             items: [
