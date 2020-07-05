@@ -20,19 +20,21 @@ export const fetchCollectionsFail = errorMessage => ({
 
 // Async thunk action creator.
 const fetchCollectionsAsync = () => {
-    return dispatch => {
-        const collectionRef = firestore.collection('collections');
-        // Dispatch FETCH-COLLECTIONS_START action.
-        dispatch(fetchCollectionsStart());
-        collectionRef.get().then(snapshot => {
-            const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
+    return async dispatch => {
+        try {
+            // Retrieve firebase collection reference.
+            const collectionRef = firestore.collection('collections');
+            // Dispatch FETCH-COLLECTIONS_START action.
+            dispatch(fetchCollectionsStart());
+            // Retrieve firebase collection snapshot.
+            const snapShot = await collectionRef.get();
+            const collectionsMap = convertCollectionsSnapshotToMap(snapShot);
             // Dispatch fetchCollectionsSuccess action to add collections to redux store.
             dispatch(fetchCollectionsSuccess(collectionsMap));
-        })
-        .catch(error => {
+        } catch(error) {
             // Dispatch FETCH_COLLECTIONS_FAIL action.
             dispatch(fetchCollectionsFail(error.message));
-        });
+        }
     }
 };
 
