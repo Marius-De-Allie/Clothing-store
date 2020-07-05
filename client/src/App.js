@@ -26,14 +26,13 @@ export const App = ({ setCurrentUser, collectionsArray, currentUser }) => {
         const userRef = await createUserProfileDocument(userAuth);
 
         userRef.onSnapshot(snapShot => {
-          console.log(snapShot.data());
+          // console.log(snapShot.data());
           // Dispatch setCurrentUser action.
           setCurrentUser({
               id: snapShot.id,
               ...snapShot.data()
           });
         });
-
       } else {
         setCurrentUser(userAuth);
       } 
@@ -52,7 +51,7 @@ export const App = ({ setCurrentUser, collectionsArray, currentUser }) => {
           <Suspense fallback={<Spinner />}>
             <Route exact path="/" component={Homepage} />
             <Route path="/shop" component={ShopPage} />
-            <Route exact path="/signin" render={() => currentUser ? <Redirect to="/"/> : <SignInPage />} />
+            <Route exact path="/signin" render={() => currentUser ? <Redirect to="/" /> : <SignInPage />} />
             <Route exact path="/checkout" component={CheckOutPage} />
           </Suspense>
         </ErrorBoundary>

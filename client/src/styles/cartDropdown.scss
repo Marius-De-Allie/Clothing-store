@@ -5,7 +5,8 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    border: 1px solid black;
+    // border: 1px solid black;
+    border: 1px solid #32a887;
     background-color: white;
     top: 90px;
     right: 40px;
@@ -14,6 +15,7 @@
     .empty-message {
       font-size: 18px;
       margin: 50px auto;
+      color: #32a887;
     }
   
     .cart-items {

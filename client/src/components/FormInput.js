@@ -3,18 +3,17 @@ import React from 'react';
 import '../styles/formInput.scss';
 
 const FormInput = ({ handleChange, label, ...otherProps }) => (
-    <div className="gropup"> 
+    <div className="group"> 
         <input 
             className="form-input" 
             onChange={handleChange} 
             {...otherProps} 
         />
         {
-            label ? 
-            <label htmlFor={otherProps.id} className={`${otherProps.value.length? 'shrink' : ''} form-input-label`}>
+            label && 
+            <label htmlFor={otherProps.id} className={`${otherProps.value.length ? 'shrink' : ''} form-input-label`}>
                 {label}
             </label>
-            : null
         }
     </div>
 );

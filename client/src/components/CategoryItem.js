@@ -17,15 +17,14 @@ const CategoryItem = ({ item, addItem }) => {
         <div className="category-item">
             <div 
                 className="image"
-                style={{backgroundImage: `url${imageUrl}`}}
+                style={{backgroundImage: `url(${imageUrl})`}}
             >
             </div>
             <div className="category-footer">
-            
                 <span className="name">{name}</span>
-                <span className="price">{price}</span>
+                <span className="price">{`$${price}`}</span>
             </div>
-            <CustomButton inverted onClick={handleClick}>Add to cart</CustomButton>
+            <CustomButton inverted onClick={handleClick}> Add to cart </CustomButton>
         </div>
     );
 };

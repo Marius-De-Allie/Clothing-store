@@ -23,7 +23,7 @@ const SignUp = () => {
             return;
         } else {
             try {
-                const { user } = auth.createUserWithEmailAndPassword(email, password);
+                const { user } = await auth.createUserWithEmailAndPassword(email, password);
 
                 await createUserProfileDocument(user, {displayName});
                 // empty input fields.
@@ -40,7 +40,7 @@ const SignUp = () => {
     };
     
     const handleChange = evt => {
-        const{ name, value} = evt.target;
+        const { name, value} = evt.target;
         setCredentials({...credentials, [name]: value});
     };
     

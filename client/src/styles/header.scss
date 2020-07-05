@@ -4,11 +4,20 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
+    // color: #32a887;
+    font-family: 'Open Sans Condensed';
   
     .logo-container {
       height: 100%;
       width: 70px;
       padding: 25px;
+      color: #32a887;
+
+      .logo {
+        color: #32a887;
+
+
+      }
     }
   
     .options {
@@ -17,11 +26,21 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-  
+
+      :hover {
+        color: #32a887;
+      }
+
+      .active {
+        color: #32a887;
+        font-weight: bold;
+      }
+
       .option {
         padding: 10px 15px;
         cursor: pointer;
       }
+
     }
   }
   

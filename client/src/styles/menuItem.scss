@@ -19,6 +19,11 @@
 
       & .content {
         opacity: 0.9;
+        color: #32a887;
+
+        & .title {
+          color:  #32a887; 
+        }
       }
     }
 

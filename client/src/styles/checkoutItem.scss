@@ -24,12 +24,17 @@
   
     .quantity {
       display: flex;
+      // padding-left: 20px;
 
       .arrow {
         cursor: pointer;
+
+        &:hover {
+          color: #32a887;
+        }
       }
 
-      .value{
+      .value {
         margin: 0 10px;
       }
     }
@@ -37,6 +42,10 @@
     .remove-button {
       padding-left: 12px;
       cursor: pointer;
+
+      &:hover {
+        color: #32a887;
+      }
     }
   }
   
