@@ -13,6 +13,8 @@
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid darkgrey;
+      color: #32a887;
+      font-size: 20px;
   
       .header-block {
         text-transform: capitalize;
@@ -38,7 +40,7 @@
     .test-warning {
       text-align: center;
       margin-top: 40px;
-      font-size: 24px;
+      font-size: 20px;
       color: red;
     }
   }

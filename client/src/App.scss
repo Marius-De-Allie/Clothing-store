@@ -1,6 +1,6 @@
 body {
     font-family: 'Open Sans Condensed', Arial, sans-serif;
-    padding: 20px 60px;
+    padding: 20px 40px;
 }
 
 /* Link text styling */
@@ -12,4 +12,122 @@ a {
 /* universal styles. */
 * {
     box-sizing: border-box;
+}
+
+// MEDIA QUERIES.
+
+
+@media screen and (max-width: 950px) {
+    div.checkout-item, div.checkout-page div.checkout-header div.header-block span {
+        font-size: 18px;
+    }
+
+    // Sign in Page styling.
+    div.sign-in-page {
+        flex-direction: column;
+        align-items: center;
+        div.sign-in, div.sign-up {
+            width: 50vw;
+        }
+
+        div.sign-in {
+            margin-bottom: 30px;
+        }
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        padding: 10px;
+    };
+
+    // Checkout page styling.
+    div.checkout-page {
+        width: 80%;
+    }
+
+
+    // CategoryItem styling.
+    div.category-item {
+        width: 40vw;
+    };
+
+    div.category-item div#cat-image:hover {
+        opacity: unset;
+    };
+
+    #add-btn:hover {
+        opacity: unset;
+    };
+
+    #add-btn {
+        display: block;
+        opacity: 0.9;
+        min-width: unset;
+        padding: 0 10px;
+        border: 1px solid #32a887;
+    };
+
+    // CategoryPreview styles.
+    div.category-preview {
+        align-items: center;
+
+        div.preview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 15px;
+
+        };
+    };  
+};
+
+@media screen and (max-width: 735px) {
+    // Sign in buttons styling.
+    div.sign-in {
+        .buttons {
+            flex-direction: column;
+            align-items: flex-start;
+
+            #google-btn {
+                margin-left: unset;
+                margin-top: 15px;
+            }
+        }
+    }
+};
+
+
+@media screen and (max-width: 550px) {
+
+    // Header comp.
+    .header {
+        height: 60px;
+        padding: 10px;
+        margin-bottom: 20px;
+
+        .logo-container {
+            width: 50px;
+            padding: 0;
+        }
+
+        .options {
+            width: 80%;
+        }
+    }
+
+    // HOMEPAGE MENU ITEMS STYLING.
+    div.large.menu-item, div.menu-item {
+        height: 200px;
+    }
+    // Checkout page styling.
+    div.checkout-page {
+        width: 90%;
+    }
+
+    div.checkout-item {
+        .image-container {
+            width: 20%;
+        }
+    }
 }

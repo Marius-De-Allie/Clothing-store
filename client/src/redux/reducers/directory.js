@@ -1,3 +1,5 @@
+
+
 export const INITIAL_STATE = {
     sections: [
         {
@@ -25,6 +27,7 @@ export const INITIAL_STATE = {
           title: 'womens',
           // imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
           imageUrl: 'https://images.pexels.com/photos/2085118/pexels-photo-2085118.jpeg?cs=srgb&dl=woman-holding-her-hat-while-holding-her-camera-2085118.jpg&fm=jpg',
+          // imageUrl: '../assets/images/womens.jpg',
           size: 'large',
           id: 4,
           linkUrl: 'shop/womens'

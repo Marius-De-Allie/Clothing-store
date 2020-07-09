@@ -17,6 +17,7 @@ const CategoryItem = ({ item, addItem }) => {
         <div className="category-item">
             <div 
                 className="image"
+                id="cat-image"
                 style={{backgroundImage: `url(${imageUrl})`}}
             >
             </div>
@@ -24,7 +25,7 @@ const CategoryItem = ({ item, addItem }) => {
                 <span className="name">{name}</span>
                 <span className="price">{`$${price}`}</span>
             </div>
-            <CustomButton inverted onClick={handleClick}> Add to cart </CustomButton>
+            <CustomButton id="add-btn" inverted onClick={handleClick}> Add to cart </CustomButton>
         </div>
     );
 };
