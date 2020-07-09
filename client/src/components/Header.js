@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { auth } from '../firebase/firebase.utils';
 import CartIcon from './CartIcon';
 import CartDropdown from './CartDropdown';
-import { ReactComponent as Logo } from '../assets/crown.svg'
+import { ReactComponent as Logo } from '../assets/lion.svg'
 // styles.
 import '../styles/header.scss';
 
@@ -12,7 +12,6 @@ const Header = ({ currentUser, hidden }) => (
     
     <div className="header">
         <NavLink className="logo-container" to="/">
-            { /*logo here */ }
             <Logo className="logo" />
         </NavLink>
         <div className="options">
