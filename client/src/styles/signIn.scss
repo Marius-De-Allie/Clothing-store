@@ -14,5 +14,18 @@
 
     #google-btn {
         margin-left: 10px;
+        display: flex;
+        justify-content: space-evenly;
+        
+        // &:hover {
+        //     #google-icon {
+        //         visibility: visible;
+        //     }
+        // }
+
+        #google-icon {
+            margin-left: 5px;
+            font-size: 18px;
+        }
     }
 }

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 import FormInput from './FormInput';
 import CustomButton from './CustomButton';
 import { auth, signInWithGoogle } from '../firebase/firebase.utils';
@@ -59,7 +61,10 @@ const SignIn = () => {
                 />
                 <div className="buttons">
                     <CustomButton type="submit"> Sign In </CustomButton>
-                    <CustomButton id="google-btn" type="button" onClick={signInWithGoogle} isGoogleSignIn>Sign In with Google</CustomButton>
+                    <CustomButton id="google-btn" type="button" onClick={signInWithGoogle} isGoogleSignIn>
+                        Sign In with Google
+                        <div id="google-icon"><FontAwesomeIcon icon={faGoogle} inverse /></div>
+                    </CustomButton>
                 </div>
             </form>
         </div>
