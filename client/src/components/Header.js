@@ -25,7 +25,7 @@ const Header = ({ currentUser, hidden, emptyCart }) => {
             </NavLink>
             <div className="options">
                 <NavLink  activeClassName="active" className="option" to="/shop">SHOP</NavLink>
-                <NavLink  activeClassName="active" className="option" to="/shop">CONTACT</NavLink>
+                <NavLink  activeClassName="active" className="option" to="/contact">CONTACT</NavLink>
                 {
                     currentUser ? 
                     <div className="option" id="sign-out" onClick={onSignOut}>SIGN OUT</div> :
