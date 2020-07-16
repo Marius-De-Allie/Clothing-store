@@ -18,7 +18,6 @@ const CategoryPageWithSpinner = WithSpinner(CategoryPage);
 
 
 const ShopPage = ({ fetchCollectionsAsync, match, isLoading }) => {
-
     useEffect(() => {
         // Dispatch fetchCollectionsAsync asynchronous action creator to fetch shop collections.
         fetchCollectionsAsync();
