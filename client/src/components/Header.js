@@ -45,4 +45,8 @@ const mapStateToProps = ({ user, cart }) => ({
     hidden: cart.hidden
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = () => ({
+    emptyCart
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
