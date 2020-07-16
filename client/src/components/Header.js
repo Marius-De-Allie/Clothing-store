@@ -9,16 +9,14 @@ import { emptyCart } from '../redux/actions/cart';
 // styles.
 import '../styles/header.scss';
 
-const Header = ({ currentUser, hidden }) => {
+const Header = ({ currentUser, hidden, emptyCart }) => {
     // Sign out event handler.
     const onSignOut = () => {
         // sign out user via firebase.
         auth.signOut();
-        // Empty shopping cart.
-
-
-
-    }
+        // Empty shopping cart - dispatch empty cart action.
+        emptyCart();
+    };
     
     return (
         <div className="header">
@@ -45,8 +43,8 @@ const mapStateToProps = ({ user, cart }) => ({
     hidden: cart.hidden
 });
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = {
     emptyCart
-});
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

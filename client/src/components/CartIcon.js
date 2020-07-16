@@ -17,8 +17,8 @@ const mapStateToProps = ({ cart }) => ({
     itemCount: cart.items.reduce((accumulatedQuantity, item) => accumulatedQuantity + item.quantity, 0)
 });
 
-const mapDispatchToprops = ({
+const mapDispatchToProps = {
     toggleHidden
-});
+};
 
-export default connect(mapStateToProps, mapDispatchToprops)(CartIcon);
+export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
