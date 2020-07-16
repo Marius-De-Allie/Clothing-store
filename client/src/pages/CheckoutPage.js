@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CheckoutItem from '../components/CheckoutItem';
 import StripeCheckoutButton from '../components/StripeCheckoutButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 // styles
 import '../styles/checkOutPage.scss'
 
@@ -25,6 +27,7 @@ const CheckOutPage = ({ items, totalPrice }) => (
             </div>
         </div>
         {items.map(item => <CheckoutItem key={item.id} item={item} />)}
+        <div className="empty-cart">empty cart<FontAwesomeIcon className="trash-icon" icon={faTrash} /></div>
         <div className="total">
             <span>TOTAL: ${totalPrice}</span>
         </div>
