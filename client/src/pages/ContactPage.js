@@ -6,7 +6,7 @@ import { faHammer } from '@fortawesome/free-solid-svg-icons';
 const ContactPage = () => (
     <div className="contact-page">
         <FontAwesomeIcon icon={faHammer} />
-        <h2>Page under construction, come back soon.</h2>
+        <h2 className="contact-heading">Page under construction, come back soon.</h2>
         <Link to="/" className="backhome-link">Return Home</Link>
     </div>
 );
