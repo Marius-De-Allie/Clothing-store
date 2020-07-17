@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
 
 const StripeCheckoutButton = ({ price }) => {
@@ -21,6 +22,9 @@ const StripeCheckoutButton = ({ price }) => {
         })
         .then(res => {
             alert('Payment successful');
+            // on successfully payment empty cart.
+
+            // redirect to homepage.
         })
         .catch(error => {
             console.log('Payment error: ', JSON.parse(error));
