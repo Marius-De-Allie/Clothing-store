@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { auth } from '../firebase/firebase.utils';
 import CartIcon from './CartIcon';
 import CartDropdown from './CartDropdown';
@@ -10,6 +10,8 @@ import { emptyCart } from '../redux/actions/cart';
 import '../styles/header.scss';
 
 const Header = ({ currentUser, hidden, emptyCart, match }) => {
+    // useLocation react-router hook.
+    const location = useLocation();
     // Sign out event handler.
     const onSignOut = () => {
         // sign out user via firebase.
