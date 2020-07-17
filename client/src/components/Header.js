@@ -33,7 +33,7 @@ const Header = ({ currentUser, hidden, emptyCart, match }) => {
                     <div className="option" id="sign-out" onClick={onSignOut}>SIGN OUT</div> :
                     <NavLink  activeClassName="active" className="option" to="/signin">SIGN IN</NavLink>
                 }
-                <CartIcon />
+                <CartIcon active={location.pathname === '/checkout'} />
             </div>
             {!hidden && <CartDropdown />}
         </div>

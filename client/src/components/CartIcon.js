@@ -5,10 +5,10 @@ import { toggleHidden } from '../redux/actions/cart';
 // styles.
 import '../styles/cartIcon.scss';
 
-const CartIcon = ({ toggleHidden, itemCount }) => (
+const CartIcon = ({ toggleHidden, itemCount, active }) => (
     <div className="cart-icon" onClick={toggleHidden}>
         <ShoppingIcon className="shopping-icon" />
-        <span className="item-count">{itemCount}</span>
+        <span className={`item-count ${active ? 'active' : ''}`}>{itemCount}</span>
     </div>
 );
 
