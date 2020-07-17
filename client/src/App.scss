@@ -80,6 +80,15 @@ a {
 
         };
     };  
+
+    // Category page styling.
+    div.category-page {
+        align-items: center;
+        div.items {
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 15px;
+        };
+    };
 };
 
 @media screen and (max-width: 735px) {
