@@ -2,8 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
+import { emptyCart } from '../redux/actions/cart';
 
 const StripeCheckoutButton = ({ price }) => {
+    const dispatch = useDispatch();
     const stripePrice = price * 100;
     const publishableKey = 'pk_test_51Gvru9BC8emmIHok575meXvz37Ly5cn5BhiKZ6vfuojHhDQoCGbu64WLEuD9ui5bzKcSbWHXf02kQh8ie8bHArSm00bUe3IFxb';
 
@@ -22,7 +24,8 @@ const StripeCheckoutButton = ({ price }) => {
         })
         .then(res => {
             alert('Payment successful');
-            // on successfully payment empty cart.
+            // on successfully payment dispatch EMPTY_CART action to clear cart contents.
+            dispatch(emptyCart());
 
             // redirect to homepage.
         })
