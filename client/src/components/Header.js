@@ -9,7 +9,7 @@ import { emptyCart } from '../redux/actions/cart';
 // styles.
 import '../styles/header.scss';
 
-const Header = ({ currentUser, hidden, emptyCart, match }) => {
+const Header = ({ currentUser, hidden, emptyCart }) => {
     // useLocation react-router hook.
     const location = useLocation();
     // Sign out event handler.

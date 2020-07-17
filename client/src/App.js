@@ -34,6 +34,8 @@ export const App = ({ setCurrentUser, collectionsArray, currentUser }) => {
               ...snapShot.data()
           });
         });
+
+
       } else {
         setCurrentUser(userAuth);
       } 
@@ -111,8 +113,8 @@ export const App = ({ setCurrentUser, collectionsArray, currentUser }) => {
 
 const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
+  hidden: state.cart.hidden
   // collectionsArray: Object.keys(state.shop.collections).map(key => state.shop.collections[key])
-
 });
 
 const mapDispatchToProps = ({
