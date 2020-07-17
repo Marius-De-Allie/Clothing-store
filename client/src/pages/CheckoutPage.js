@@ -8,7 +8,7 @@ import { emptyCart } from '../redux/actions/cart';
 // styles
 import '../styles/checkOutPage.scss'
 
-const CheckOutPage = ({ items, totalPrice, emptyCart }) => {
+const CheckOutPage = ({ items, totalPrice, currentUser, emptyCart }) => {
 
     // Handle empty cart click event.
     const onEmptyCart = () => {
@@ -45,14 +45,15 @@ const CheckOutPage = ({ items, totalPrice, emptyCart }) => {
                 <br />
                 4242-4242-4242-4242 - Exp: 01/25 - CVV: 123
             </div>
-            <StripeCheckoutButton price={totalPrice}/>
+            <StripeCheckoutButton price={totalPrice} />
         </div>
     );
 };
 
-const mapStateToProps = ({ cart }) => ({
+const mapStateToProps = ({ cart, user }) => ({
     items: cart.items,
-    totalPrice: cart.items.reduce((accumulatedPrice, item) => accumulatedPrice + item.quantity * item.price, 0)
+    totalPrice: cart.items.reduce((accumulatedPrice, item) => accumulatedPrice + item.quantity * item.price, 0),
+    currentUser: user.currentUser
 });
 
 const mapDispatchToProps = {
