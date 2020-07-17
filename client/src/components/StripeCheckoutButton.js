@@ -29,6 +29,7 @@ const StripeCheckoutButton = ({ price }) => {
             // on successfully payment dispatch EMPTY_CART action to clear cart contents.
             dispatch(emptyCart());
             // redirect to homepage.
+            history.push('/');
         })
         .catch(error => {
             console.log('Payment error: ', JSON.parse(error));
