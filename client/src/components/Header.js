@@ -9,7 +9,7 @@ import { emptyCart } from '../redux/actions/cart';
 // styles.
 import '../styles/header.scss';
 
-const Header = ({ currentUser, hidden, emptyCart }) => {
+const Header = ({ currentUser, hidden, emptyCart, match }) => {
     // Sign out event handler.
     const onSignOut = () => {
         // sign out user via firebase.
