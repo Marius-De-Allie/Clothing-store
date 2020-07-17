@@ -27,7 +27,7 @@ const CheckOutPage = ({ items, totalPrice }) => (
             </div>
         </div>
         {items.map(item => <CheckoutItem key={item.id} item={item} />)}
-        <div className="empty-cart">empty cart<FontAwesomeIcon className="trash-icon" icon={faTrash} /></div>
+        <div className="empty-cart" onClick={() => console.log('empty cart clicked')}>empty cart<FontAwesomeIcon className="trash-icon" icon={faTrash} /></div>
         <div className="total">
             <span>TOTAL: ${totalPrice}</span>
         </div>
