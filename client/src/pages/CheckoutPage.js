@@ -4,6 +4,7 @@ import CheckoutItem from '../components/CheckoutItem';
 import StripeCheckoutButton from '../components/StripeCheckoutButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { emptyCart } from '../redux/actions/cart';
 // styles
 import '../styles/checkOutPage.scss'
 
@@ -43,6 +44,10 @@ const CheckOutPage = ({ items, totalPrice }) => (
 const mapStateToProps = ({ cart }) => ({
     items: cart.items,
     totalPrice: cart.items.reduce((accumulatedPrice, item) => accumulatedPrice + item.quantity * item.price, 0)
-})
+});
 
-export default connect(mapStateToProps)(CheckOutPage);
+const mapDispatchToProps = {
+    emptyCart;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckOutPage);
