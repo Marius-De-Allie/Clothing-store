@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import { emptyCart } from '../redux/actions/cart';
 
-const StripeCheckoutButton = ({ price }) => {
+const StripeCheckoutButton = ({ price, currentUser, items }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const stripePrice = price * 100;
@@ -49,6 +49,7 @@ const StripeCheckoutButton = ({ price }) => {
             panelLabel="Pay Now"
             token={onToken}
             stripeKey={publishableKey}
+            disabled={!currentUser || items.length === 0}
         />
     );
 };
