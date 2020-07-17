@@ -6,7 +6,6 @@ import Spinner from './components/Spinner';
 import ErrorBoundary from './components/ErrorBoundary';
 import { auth, createUserProfileDocument, addCollectionAndDocuments} from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/actions/user';
-import { toggleHidden } from './redux/actions/cart';
 import ContactPage from './pages/ContactPage';
 import './App.scss';
 
@@ -20,7 +19,7 @@ const SignInPage = lazy(() => import('./pages/SignInPage'));
 const CheckOutPage = lazy(() => import('./pages/CheckoutPage'));
 
 
-export const App = ({ setCurrentUser, collectionsArray, currentUser, hidden, toggleHidden }) => {
+export const App = ({ setCurrentUser, collectionsArray, currentUser }) => {
 
   useEffect(() => {
     const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -35,8 +34,6 @@ export const App = ({ setCurrentUser, collectionsArray, currentUser, hidden, tog
               ...snapShot.data()
           });
         });
-
-
       } else {
         setCurrentUser(userAuth);
       } 
@@ -113,14 +110,12 @@ export const App = ({ setCurrentUser, collectionsArray, currentUser, hidden, tog
 // };
 
 const mapStateToProps = ({ user, cart }) => ({
-  currentUser: user.currentUser,
-  hidden: cart.hidden
+  currentUser: user.currentUser
   // collectionsArray: Object.keys(state.shop.collections).map(key => state.shop.collections[key])
 });
 
 const mapDispatchToProps = {
-  setCurrentUser,
-  toggleHidden
+  setCurrentUser
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
