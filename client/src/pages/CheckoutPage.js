@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import CheckoutItem from '../components/CheckoutItem';
 import StripeCheckoutButton from '../components/StripeCheckoutButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -45,10 +46,9 @@ const CheckOutPage = ({ items, totalPrice, currentUser, emptyCart }) => {
                 <br />
                 4242-4242-4242-4242 - Exp: 01/25 - CVV: 123
             </div>
-            {!items || items.length === 0 && 
-                <span id="payment-text">{`*Add atleast 1 item to cart to enable pay now button.* `}</span>
-            }
-                <StripeCheckoutButton price={totalPrice} currentUser={currentUser} items={items} />
+            {!currentUser && <Link className="signin-text" to="/signin">Click here to sign in to complete payment</Link>}
+            {currentUser && (!items || items.length === 0) && <p className="pay-text">Add an item to cart to complete payment</p>}
+            <StripeCheckoutButton price={totalPrice} currentUser={currentUser} items={items} />
         </div>
     );
 };

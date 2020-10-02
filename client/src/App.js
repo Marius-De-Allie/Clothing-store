@@ -55,7 +55,7 @@ export const App = ({ setCurrentUser, collectionsArray, currentUser }) => {
             <Route exact path="/" component={Homepage} />
             <Route path="/shop" component={ShopPage} />
             <Route exact path="/contact" component={ContactPage} />
-            <Route exact path="/signin" render={() => currentUser ? <Redirect to="/" /> : <SignInPage />} />
+            <Route exact path="/signin" render={() => currentUser !==null ? <Redirect to="/" /> : <SignInPage />} />
             <Route exact path="/checkout" component={CheckOutPage} />
             {/*<Route component={NotfoundPage} />*/}
           </Suspense>

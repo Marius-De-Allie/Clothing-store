@@ -39,8 +39,8 @@ const StripeCheckoutButton = ({ price, currentUser, items }) => {
 
     return (
         <StripeCheckout 
-            label="Pay Now"
-            name="Lion Clothing"
+            label={!currentUser ? 'Please Sign to complete payment' : 'Pay Now'}
+            name="Clothing Store"
             billingAddress
             shippingAddress
             // image="https://svgsgare,com.i/CUz.svg"
