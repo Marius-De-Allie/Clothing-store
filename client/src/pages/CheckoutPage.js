@@ -45,7 +45,10 @@ const CheckOutPage = ({ items, totalPrice, currentUser, emptyCart }) => {
                 <br />
                 4242-4242-4242-4242 - Exp: 01/25 - CVV: 123
             </div>
-            <StripeCheckoutButton price={totalPrice} currentUser={currentUser} items={items} />
+            {!items || items.length === 0 && 
+                <span id="payment-text">{`*Add atleast 1 item to cart to enable pay now button.* `}</span>
+            }
+                <StripeCheckoutButton price={totalPrice} currentUser={currentUser} items={items} />
         </div>
     );
 };

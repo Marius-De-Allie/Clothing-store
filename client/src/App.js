@@ -7,7 +7,6 @@ import ErrorBoundary from './components/ErrorBoundary';
 import { auth, createUserProfileDocument, addCollectionAndDocuments} from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/actions/user';
 import ContactPage from './pages/ContactPage';
-import NotfoundPage from './pages/NotfoundPage';
 import './App.scss';
 
 // Lazy load Homepage component.
@@ -18,6 +17,8 @@ const ShopPage = lazy(() => import('./pages/ShopPage'));
 const SignInPage = lazy(() => import('./pages/SignInPage'));
 // Lazy load CheckOutPage component.
 const CheckOutPage = lazy(() => import('./pages/CheckoutPage'));
+// Lazy load 404Page component.
+const NotfoundPage = lazy(() => import('./pages/NotfoundPage'));
 
 
 export const App = ({ setCurrentUser, collectionsArray, currentUser }) => {
@@ -56,7 +57,7 @@ export const App = ({ setCurrentUser, collectionsArray, currentUser }) => {
             <Route exact path="/contact" component={ContactPage} />
             <Route exact path="/signin" render={() => currentUser ? <Redirect to="/" /> : <SignInPage />} />
             <Route exact path="/checkout" component={CheckOutPage} />
-            <Route component={NotfoundPage} />
+            {/*<Route component={NotfoundPage} />*/}
           </Suspense>
         </ErrorBoundary>
       </Switch>
